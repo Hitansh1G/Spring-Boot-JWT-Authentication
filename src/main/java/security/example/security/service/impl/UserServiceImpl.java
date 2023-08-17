@@ -54,12 +54,15 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void addToUser(String username, String rolename) {
-        if(userRepository.findByEmail(username).isEmpty()){
+        System.out.println(1);
+        if(userRepository.findByEmail(username).isPresent()){
+            System.out.println("this is going into findbyemail");
             throw new IllegalArgumentException("User with email "+username+" does not exist");
         }
         Role role = roleRepository.findByName(rolename);
-        if(role.equals(null)){
-            throw new IllegalArgumentException("role with this name does not exiost");
+        if(role == null){
+            System.out.println("this is going in role == NULL");
+            throw new IllegalArgumentException("role with this name"+rolename+" does not exist");
         }
         User user = userRepository.findByEmail(username).get();
         user.getRoles().add(role);

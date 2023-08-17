@@ -28,13 +28,24 @@ public class SecurityApplication {
 	@Bean
 	CommandLineRunner run(UserService userService){
 		return args -> {
-			userService.saveRole(new Role(null,"ROLE_USER ", "THIS IS THE USER"));
-			userService.saveRole(new Role(null,"ROLE_ADMIN ", "THIS IS THE USER"));
-			userService.saveRole(new Role(null,"ROLE_MANAGER ", "THIS IS THE USER"));
+			userService.saveRole(new Role(null,"ROLE_USER ", "this is the User"));
+			System.out.println("1");
+			userService.saveRole(new Role(null,"ROLE_ADMIN ", "this is the User"));
+			System.out.println("12");
+			userService.saveRole(new Role(null,"ROLE_MANAGER ", "this is the User"));
+			System.out.println("123");
 
-			userService.saveUser(new User("89980908", "omkar" , "omprakash@gmail.com", "pass",new HashSet<>()));
-			userService.saveUser(new User("89980908", "omkar1" , "omprakash@gmail.com", "pass",new HashSet<>()));
-			userService.saveUser(new User("89980908", "omkar2" , "omprakash@gmail.com", "pass",new HashSet<>()));
+			userService.saveUser(new User("89980908", "omkar" , "omkark@gmail.com", "pass",new HashSet<>()));
+			userService.saveUser(new User("89980908", "omkar1" , "omkark1@gmail.com", "pass",new HashSet<>()));
+			userService.saveUser(new User("89980908", "omkar2" , "omkark2@gmail.com", "pass",new HashSet<>()));
+			System.out.println("12");
+
+
+			userService.addToUser("omkark@gmail.com", "ROLE_USER");
+			System.out.println("1234");
+			userService.addToUser("omkark1@gmail.com", "ROLE_ADMIN");
+			userService.addToUser("omkark2@gmail.com", "ROLE_MANAGER");
+			System.out.println("122");
 
 		};
 	}
